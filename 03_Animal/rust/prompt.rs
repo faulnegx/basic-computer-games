@@ -1,14 +1,26 @@
-
-fn prompt(prompt_text: &str){
+// Prompt pass through here
+fn prompt(prompt_text: &str) -> String {
    println!("{}", prompt_text);
+   let mut line = String::new();
+   std::io::stdin().read_line(&mut line).unwrap();
+   return line.trim().to_uppercase();
+}
+
+fn start() {
+   let response = prompt("ARE YOU THINKING OF AN ANIMAL(Y/N)?");
+   if "Y" == response {
+      println!("This is a y");
+   } else {
+      println!("this is not a why");
+   }
 }
 
 
 fn main(){
-   let mut line = String::new();
-   println!("Enter your name :");
-   let b1 = std::io::stdin().read_line(&mut line).unwrap();
-   println!("Hello , {}", line);
-   println!("no of bytes read , {}", b1);
-   prompt("45");
+   println!("PLAY 'GUESS THE ANIMAL'\n");
+
+   println!("THINK OF AN ANIMAL AND THE COMPUTER WILL TRY TO GUESS IT.\n");
+   start();
+
+
 }
